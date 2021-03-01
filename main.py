@@ -64,11 +64,13 @@ patikrinimus, jogy tikrai skaičius, jog jis yra didesnis už 0, bei x ilgis dal
 dalis po y simbolių. Jei šios sąlygostenkinamos 
 suskaidyti tekstą į lygias dalis po y simbolių ir atspausdinti unikalius simbolius (svarbu išlaikytisimbolių eiliškumą).
 """
-def split_str(seq, chunk, skip_tail=False):
+
+#funkcija kuri isdalina teksta po pasirinktas dalis
+def iskaidyti(seq, chunk, skip_tail=False):
     lst = []
     if chunk <= len(seq):
         lst.extend([seq[:chunk]])
-        lst.extend(split_str(seq[chunk:], chunk, skip_tail))
+        lst.extend(iskaidyti(seq[chunk:], chunk, skip_tail))
     elif not skip_tail and seq:
         lst.extend([seq])
     return lst
@@ -77,14 +79,17 @@ def trecias():
     x = input("Ivesti raides")
     y = int(input("Ivesti viena teigiama skaiciu"))
 
-
+    #tikrinama ar ivestas skaicius yra daugiau uz 0
     if(y < 0):
         print("Ivestas skaicius yra mazesnis uz 0")
+        #tikrinama ar ivestas tekstas gali buti dalinamas i dalis pasirinkto skaiciaus
     elif(len(x)%y != 0):
         print("Nera dalinamas is pasirinkto skaiciaus")
     else:
-        print(split_str(x, y))
-        print(split_str(x, y, skip_tail=True))
+        # gaunama po kiek raidziu turi buti isdalintame vienete
+        dalina = int(len(x) / y)
+        print(dalina)
+        print(iskaidyti(x, dalina))
 
 
 trecias()
@@ -94,8 +99,17 @@ Sukurti funkciją, kuri atlieka teksto suspaudimą. Funkcija priima vieną param
 x - tekstas ir grąžina tekstąsudarytą iš simbolio ir 
 jo iš eilės einančių pasikartojimų skaičiaus t.y. suspaudimas vykdomas grupuojant iš eilėseinančius simbolius
 """
+#funkcija iskaido teksta i simbolius
+def split(word):
+    return list(word)
+#gauna kintamaji
+def penktauzduotis(tekstas):
+    sentence = tekstas
+    print(sentence.count('a'))
+    print(split(tekstas))
 
-def penktauzduotis():
+#penktauzduotis("Mano vardas")
+
 
 
 
