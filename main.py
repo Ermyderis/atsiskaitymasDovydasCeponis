@@ -53,6 +53,50 @@ Sukurti antrą funkciją, kuri priima vieną parametrą b - sąrašą
 sudarytą iš sąrašųir kiekvienam sąrašo elementui
 iškviečia pirmą funkciją ir atspausdina gautą rezultatą
 """
+data_list= [   [1, 10, 34, 110, 400, 30, 20],   [-5, -10, 55, 120, 30],   [2, 67, 23, 78, 200],]
+
+
+
+"""
+Sukurti programą, kuri vartotojo paprašo įvesti 
+simbolių seką - x, bei vieną skaitmenį - y. Atlikti 
+patikrinimus, jogy tikrai skaičius, jog jis yra didesnis už 0, bei x ilgis dalinasi į lygias 
+dalis po y simbolių. Jei šios sąlygostenkinamos 
+suskaidyti tekstą į lygias dalis po y simbolių ir atspausdinti unikalius simbolius (svarbu išlaikytisimbolių eiliškumą).
+"""
+def split_str(seq, chunk, skip_tail=False):
+    lst = []
+    if chunk <= len(seq):
+        lst.extend([seq[:chunk]])
+        lst.extend(split_str(seq[chunk:], chunk, skip_tail))
+    elif not skip_tail and seq:
+        lst.extend([seq])
+    return lst
+
+def trecias():
+    x = input("Ivesti raides")
+    y = int(input("Ivesti viena teigiama skaiciu"))
+
+
+    if(y < 0):
+        print("Ivestas skaicius yra mazesnis uz 0")
+    elif(len(x)%y != 0):
+        print("Nera dalinamas is pasirinkto skaiciaus")
+    else:
+        print(split_str(x, y))
+        print(split_str(x, y, skip_tail=True))
+
+
+trecias()
+
+"""
+Sukurti funkciją, kuri atlieka teksto suspaudimą. Funkcija priima vieną parametrą
+x - tekstas ir grąžina tekstąsudarytą iš simbolio ir 
+jo iš eilės einančių pasikartojimų skaičiaus t.y. suspaudimas vykdomas grupuojant iš eilėseinančius simbolius
+"""
+
+def penktauzduotis():
+
 
 
 
