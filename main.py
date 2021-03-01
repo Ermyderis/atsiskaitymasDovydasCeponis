@@ -53,7 +53,36 @@ Sukurti antrą funkciją, kuri priima vieną parametrą b - sąrašą
 sudarytą iš sąrašųir kiekvienam sąrašo elementui
 iškviečia pirmą funkciją ir atspausdina gautą rezultatą
 """
-data_list= [   [1, 10, 34, 110, 400, 30, 20],   [-5, -10, 55, 120, 30],   [2, 67, 23, 78, 200],]
+data_list= [[1, 10, 34, 110, 400, 30, 20],
+               [-5, -10, 55, 120, 30],
+               [2, 67, 23, 78, 200],
+               ]
+
+
+def antra(filtruoti):
+
+    rezultataiisfiltruoto = []
+    #Filtruojama pagal nurodytas reiksme
+    isfiltruotiskaiciai = list(filter(lambda x: x >= 10 and x <= 100, filtruoti))
+    #gaunamas vidurkis skaiciu
+    vidurkis = sum(isfiltruotiskaiciai)/ len(isfiltruotiskaiciai)
+    #i lista pridedamas vidurkis
+    rezultataiisfiltruoto.append(vidurkis)
+    minimali = (min(isfiltruotiskaiciai))
+    rezultataiisfiltruoto.append(minimali)
+    maksimalireiksme = (max(isfiltruotiskaiciai))
+    rezultataiisfiltruoto.append(maksimalireiksme)
+    sumavisu = sum(isfiltruotiskaiciai)
+    rezultataiisfiltruoto.append(sumavisu)
+
+    return(rezultataiisfiltruoto)
+
+
+#gaunamos reiksme
+print(antra(data_list[0]))
+print(antra(data_list[1]))
+print(antra(data_list[2]))
+
 
 
 
@@ -77,7 +106,14 @@ def iskaidyti(seq, chunk, skip_tail=False):
 
 def trecias():
     x = input("Ivesti raides")
-    y = int(input("Ivesti viena teigiama skaiciu"))
+    kartoti = True
+    #tikrina ar ivestas simbolis yra skaicius
+    while(kartoti == True):
+        try:
+            y = int(input("Ivesti viena teigiama skaiciu"))
+            kartoti = False
+        except:
+            print("Veskite tik skaiciu")
 
     #tikrinama ar ivestas skaicius yra daugiau uz 0
     if(y < 0):
